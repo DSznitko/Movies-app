@@ -1,0 +1,63 @@
+.banner {
+  width: 90%;
+  height: 850px;
+  border-radius: 10px;
+  position: relative;
+  background-image: url("../../assets/images/Avatar_img.jpeg");
+  margin-top: 6.5rem;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.banner::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.banner__content {
+  position: absolute;
+  top: 60%;
+  left: 8%;
+  z-index: 3;
+}
+
+.banner__title {
+  font-size: var(--h2);
+  font-family: var(--main-font);
+  color: #fff;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.banner__title::after {
+  position: absolute;
+  content: "";
+  width: 110px;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--main-color);
+  border-radius: 10px;
+}
+
+.thin__title {
+  font-weight: 300;
+}
+
+.cta {
+  text-decoration: none;
+  font-family: var(--main-font);
+  font-size: var(--p);
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.cta:hover {
+  color: var(--main-color);
+}
