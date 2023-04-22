@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Header.module.css";
-import HeaderBanner from "../headerBaner/HeaderBanner";
+import HeaderBanner from "../headerBanner/HeaderBanner";
 
 const Header = () => {
   return (
