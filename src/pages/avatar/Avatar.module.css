@@ -1,0 +1,32 @@
+.avatar__wrapper {
+  margin: 0 auto;
+  background-color: var(--dark-black);
+  width: 100%;
+}
+
+.main__content {
+  display: flex;
+  flex-direction: column;
+  margin: 6.8rem 0 1rem 1rem;
+  align-items: center;
+}
+
+.avatar__title {
+  color: #fff;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.5rem;
+  font-size: var(--h2);
+  border-bottom: 2px solid var(--main-color);
+}
+
+.avatar__img {
+  max-width: 500px;
+  max-height: 700px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px var(--main-color);
+}
+
+.avatar__date {
+  color: #fff;
+}
