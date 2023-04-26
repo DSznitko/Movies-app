@@ -30,3 +30,22 @@
 .avatar__date {
   color: #fff;
 }
+
+.strong {
+  color: var(--main-color);
+}
+
+.red {
+  background-color: rgb(228, 19, 19);
+  color: rgb(252, 112, 112);
+}
+
+.orange {
+  background-color: rgb(224, 148, 5);
+  color: rgb(255, 196, 86);
+}
+
+.green {
+  background-color: rgb(0, 99, 0);
+  color: rgb(11, 209, 11);
+}

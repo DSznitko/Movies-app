@@ -3,8 +3,22 @@ import { useLoaderData } from "react-router-dom";
 import classes from "./Avatar.module.css";
 const Avatar = () => {
   const avatarData = useLoaderData();
+
   const { title, overview, poster_path, release_date, vote_average } =
     avatarData.results[0];
+
+  console.log(avatarData);
+  const voteColor = (voteAvr) => {
+    if (voteAvr < 5) {
+      return classes.red;
+    }
+
+    if (voteAvr > 5 && voteAvr < 8) {
+      return classes.orange;
+    }
+
+    return classes.green;
+  };
 
   return (
     <div className={classes.avatar__wrapper}>
@@ -17,9 +31,21 @@ const Avatar = () => {
         />
         <div className={classes.avatar__relase}>
           <span className={classes.avatar__date}>
-            Relase date: {release_date}
+            <strong className={classes.strong}>Relase date:</strong>
+            {release_date}
+          </span>
+          <span
+            className={`${classes.vote__average} ${voteColor(vote_average)}`}
+          >
+            {vote_average.toFixed(1)}
           </span>
         </div>
+        <section className={classes.movie__description}>
+          <p className={classes.description}>
+            <strong className={classes.strong}>Movie description: </strong>
+            {overview}
+          </p>
+        </section>
       </div>
     </div>
   );

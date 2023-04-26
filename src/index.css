@@ -17,10 +17,13 @@ html {
   --light-black: rgba(0, 0, 0, 0.4);
   --h1: 4rem;
   --h2: 3.5rem;
-  --p: 1.5rem;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   overflow: hidden;
+}
+
+p {
+  font-size: 1.5rem;
 }
