@@ -33,19 +33,80 @@
 
 .strong {
   color: var(--main-color);
+  margin-right: 0.6rem;
 }
 
 .red {
   background-color: rgb(228, 19, 19);
-  color: rgb(252, 112, 112);
+  color: #fff;
 }
 
 .orange {
   background-color: rgb(224, 148, 5);
-  color: rgb(255, 196, 86);
+  color: #fff;
 }
 
 .green {
   background-color: rgb(0, 99, 0);
-  color: rgb(11, 209, 11);
+  color: #fff;
+}
+
+.avatar__relase {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+.avatar__date {
+  font-size: 1.5rem;
+  margin-right: 6rem;
+}
+
+.vote__average {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  margin-left: 6rem;
+}
+
+.movie__description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5rem;
+  flex-wrap: wrap;
+}
+
+.description {
+  margin-left: 0.4rem;
+  color: #fff;
+  max-width: 50%;
+  word-spacing: 2px;
+}
+
+.avatar__cast {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cast__title {
+  font-size: var(--h2);
+  color: #fff;
+  letter-spacing: 1px;
+  border-left: 2px solid #fff;
+  padding-left: 0.7rem;
+}
+
+.actors__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.avatar__actor {
+  margin: 0 1rem;
 }

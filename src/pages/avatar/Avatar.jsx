@@ -1,13 +1,14 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import classes from "./Avatar.module.css";
+import avatarCastData from "./avatarCastData";
+import AvatarActor from "../../components/avatarActor/AvatarActor";
 const Avatar = () => {
   const avatarData = useLoaderData();
 
   const { title, overview, poster_path, release_date, vote_average } =
     avatarData.results[0];
 
-  console.log(avatarData);
   const voteColor = (voteAvr) => {
     if (voteAvr < 5) {
       return classes.red;
@@ -45,6 +46,22 @@ const Avatar = () => {
             <strong className={classes.strong}>Movie description: </strong>
             {overview}
           </p>
+        </section>
+        <section className={classes.avatar__cast}>
+          <h2 className={classes.cast__title}>
+            <strong className={classes.strong}>Main </strong>Cast:
+          </h2>
+          <ul className={classes.actors__list}>
+            {avatarCastData.map((actor) => {
+              return (
+                <AvatarActor
+                  key={actor.id}
+                  name={actor.actorName}
+                  img={actor.img}
+                />
+              );
+            })}
+          </ul>
         </section>
       </div>
     </div>
