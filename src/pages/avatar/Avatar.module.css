@@ -86,7 +86,7 @@
 }
 
 .avatar__cast {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,11 +102,6 @@
 
 .actors__list {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.avatar__actor {
-  margin: 0 1rem;
 }
