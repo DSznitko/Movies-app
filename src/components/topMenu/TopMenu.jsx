@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart } from "react-icons/fa";
 import classes from "./TopMenu.module.css";
 import { Link } from "react-router-dom";
+import SearchInput from "../UI/SearchInput";
 
 const TopMenu = () => {
   return (
@@ -15,6 +16,7 @@ const TopMenu = () => {
       <span className={classes.topMenu__text}>
         The best movies search platform!
       </span>
+      <SearchInput />
       <div className={classes.favMovies}>
         <h3 className={classes.favMovies__title}>Your Movies</h3>
         <FaHeart className={classes.favMovies__icon} />

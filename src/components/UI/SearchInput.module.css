@@ -1,0 +1,27 @@
+.input__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  border-radius: 12px;
+  background-color: var(--light-black);
+}
+
+.input__icon {
+  font-size: 1.5rem;
+  color: var(--main-color);
+  padding: 0 1rem;
+}
+
+.search__input {
+  padding: 1rem 1.4rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+.search__input:focus {
+  outline: none;
+  border: none;
+}
