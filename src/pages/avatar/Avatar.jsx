@@ -76,6 +76,16 @@ export const loader = async () => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=avatar-the-way-of-water`
   );
-  const movieData = response.json();
-  return movieData;
+
+  if (!response.ok) {
+    throw new Response(
+      JSON.stringify({ message: "Could not fetch the movie" }),
+      {
+        status: 500,
+      }
+    );
+  } else {
+    const movieData = response.json();
+    return movieData;
+  }
 };
