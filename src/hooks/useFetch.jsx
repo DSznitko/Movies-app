@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useFetchData = (url) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
@@ -10,7 +9,6 @@ const useFetchData = (url) => {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    setIsLoading(true);
     axios
       .get(url, { signal })
       .then((res) => {
@@ -18,9 +16,6 @@ const useFetchData = (url) => {
       })
       .catch((error) => {
         setError(error.message);
-      })
-      .finally(() => {
-        isLoading(false);
       });
 
     // cleanup function
@@ -29,7 +24,7 @@ const useFetchData = (url) => {
     };
   }, [url]);
 
-  return { isLoading, error, data };
+  return { error, data };
 };
 
 export default useFetchData;
