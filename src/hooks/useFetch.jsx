@@ -7,9 +7,12 @@ const useFetchData = (url) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     setIsLoading(true);
     axios
-      .get(url)
+      .get(url, { signal })
       .then((res) => {
         setData(res.data);
       })
@@ -19,6 +22,11 @@ const useFetchData = (url) => {
       .finally(() => {
         isLoading(false);
       });
+
+    // cleanup function
+    return () => {
+      controller.abort();
+    };
   }, [url]);
 
   return { isLoading, error, data };
