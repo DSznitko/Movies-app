@@ -104,3 +104,28 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 780px) {
+  .avatar__title {
+    margin: 2rem 0;
+    font-size: var(--h1-mobile);
+  }
+
+  .avatar__img {
+    max-height: 500px;
+  }
+
+  .movie__description {
+    margin: 0;
+  }
+
+  .avatar__cast {
+    margin-top: 3.5rem;
+  }
+
+  .actors__list {
+    justify-content: center;
+  }
+}

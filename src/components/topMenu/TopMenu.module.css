@@ -9,6 +9,7 @@
   align-items: center;
   z-index: 99;
   flex-wrap: wrap;
+  padding: 1rem;
 }
 
 .logo {
@@ -91,5 +92,21 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+/* MEDIA QUERIES  */
+
+@media (max-width: 770px) {
+  .headerLogo {
+    font-size: var(--h1-mobile);
+  }
+
+  .movies__list {
+    margin: 4.5rem auto 0 auto;
+  }
+
+  .topMenu {
+    padding: 1rem 0;
   }
 }

@@ -60,3 +60,21 @@
 .cta:hover {
   color: var(--main-color);
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 780px) {
+  .banner {
+    width: 80%;
+    height: 550px;
+    margin-top: 2rem;
+  }
+
+  .banner__content {
+    top: 70%;
+  }
+
+  .banner__title {
+    font-size: var(--h2-mobile);
+  }
+}

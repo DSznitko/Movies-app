@@ -17,6 +17,8 @@ html {
   --light-black: rgba(0, 0, 0, 0.4);
   --h1: 4rem;
   --h2: 3.5rem;
+  --h1-mobile: 2.5rem;
+  --h2-mobile: 2rem;
 }
 
 body {

@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import SearchInput from "../UI/SearchInput";
 import useFetchData from "../../hooks/useFetch";
 import SearchedMovie from "../searchedMovie/SearchedMovie";
+import useWidnowWidth from "../../hooks/useWidnowWidth";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
+
+  const { width } = useWidnowWidth();
 
   const [searchValue, setSesrchValue] = useState("");
   const [searchedMovies, setSearchedMovies] = useState([]);
@@ -29,9 +32,12 @@ const TopMenu = () => {
             <span className={classes.blue}>A</span>pp
           </h1>
         </Link>
-        <span className={classes.topMenu__text}>
-          The best movies search platform!
-        </span>
+        {width > 980 && (
+          <span className={classes.topMenu__text}>
+            The best movies search platform!
+          </span>
+        )}
+
         <SearchInput setSesrchValue={setSesrchValue} />
         <div className={classes.favMovies}>
           <h3 className={classes.favMovies__title}>Your Movies</h3>
