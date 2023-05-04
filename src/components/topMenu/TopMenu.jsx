@@ -41,7 +41,7 @@ const TopMenu = () => {
       <ul className={classes.movies__list}>
         {searchedMovies &&
           searchedMovies.map((movie) => (
-            <SearchedMovie key={movie.id} movieData={movie} fav={false} />
+            <SearchedMovie key={movie.id} movieData={movie} />
           ))}
       </ul>
     </>

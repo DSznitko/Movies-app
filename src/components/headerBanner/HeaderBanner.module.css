@@ -7,7 +7,6 @@
   margin-top: 6.5rem;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
 }
 
 .banner::after {

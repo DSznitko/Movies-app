@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./SearchedMovie.module.css";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 
-const SearchedMovie = ({ movieData, fav }) => {
+const SearchedMovie = ({ movieData }) => {
   const { id, title, vote_average, poster_path } = movieData;
 
   const voteColor = (voteAvr) => {
@@ -27,16 +28,17 @@ const SearchedMovie = ({ movieData, fav }) => {
           alt={title}
         />
       </Link>
-      <p className={classes.movie__average}>
-        Movie vote average:
-        <span
-          className={`${classes.movie__vote} ${voteColor(
-            vote_average.toFixed(2)
-          )}`}
-        >
-          {vote_average}
-        </span>
-      </p>
+      <div className={classes.movie__rank}>
+        <p className={classes.movie__average}>
+          vote average:
+          <span className={`${classes.movie__vote} ${voteColor(vote_average)}`}>
+            {vote_average.toFixed(1)}
+          </span>
+        </p>
+        <button className={classes.movie__add}>
+          add to fav. <FaHeart className={classes.fav__icon} />
+        </button>
+      </div>
     </div>
   );
 };
