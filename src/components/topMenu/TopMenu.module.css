@@ -8,6 +8,7 @@
   width: 100%;
   align-items: center;
   z-index: 99;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -56,6 +57,16 @@
   color: #fff;
   font-weight: 300;
   font-size: 1.3rem;
+}
+
+.movies__list {
+  min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  margin: 6.5rem auto 0 auto;
 }
 
 /* ANIMATIONS  */
