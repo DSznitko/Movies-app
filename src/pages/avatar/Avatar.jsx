@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import classes from "./Avatar.module.css";
 import avatarCastData from "./avatarCastData";
 import AvatarActor from "../../components/avatarActor/AvatarActor";
+
 const Avatar = () => {
   const avatarData = useLoaderData();
 

@@ -24,7 +24,7 @@ const SearchInput = () => {
           }}
           placeholder="Search Movie..."
           className={classes.search__input}
-          type="text"
+          type="search"
         />
       </div>
     </>
