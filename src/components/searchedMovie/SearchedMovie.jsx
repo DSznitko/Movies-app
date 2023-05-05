@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./SearchedMovie.module.css";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import noImageFound from "../../assets/images/no-image.jpg";
 
 const SearchedMovie = ({ movieData }) => {
   const { id, title, vote_average, poster_path } = movieData;
@@ -24,7 +25,11 @@ const SearchedMovie = ({ movieData }) => {
       <Link to={id}>
         <img
           className={classes.movie__image}
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+              : noImageFound
+          }
           alt={title}
         />
       </Link>
