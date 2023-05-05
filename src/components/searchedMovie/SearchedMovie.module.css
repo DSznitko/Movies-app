@@ -11,6 +11,7 @@
   font-size: 1.5rem;
   align-self: center;
   margin-bottom: 0.7rem;
+  border-bottom: 2px solid var(--main-color);
 }
 
 .movie__image {
@@ -84,4 +85,13 @@
 
 .movie__wrapper:hover .movie__image {
   box-shadow: 0 0 20px 5px var(--main-color);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 550px) {
+  .movie__title {
+    max-width: 70%;
+    text-align: center;
+  }
 }

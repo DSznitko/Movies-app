@@ -129,3 +129,16 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 550px) {
+  .cast__title {
+    font-size: var(--h2-mobile);
+  }
+
+  .description {
+    margin-left: 0.4rem;
+    color: #fff;
+    max-width: 85%;
+    word-spacing: 2px;
+  }
+}

@@ -110,3 +110,22 @@
     padding: 1rem 0;
   }
 }
+
+@media (max-width: 550px) {
+  .topMenu {
+    justify-content: center;
+  }
+
+  .headerLogo {
+    font-size: calc(var(--h1-mobile) - 5px);
+    margin-bottom: 0.6rem;
+  }
+
+  .favMovies {
+    margin-right: 1rem;
+  }
+
+  .movies__list {
+    margin: 8.5rem auto 0 auto;
+  }
+}

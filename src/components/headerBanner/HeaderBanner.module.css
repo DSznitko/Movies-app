@@ -78,3 +78,14 @@
     font-size: var(--h2-mobile);
   }
 }
+
+@media (max-width: 550px) {
+  .banner {
+    width: 95%;
+    height: 350px;
+  }
+
+  .banner__content {
+    top: 60%;
+  }
+}
