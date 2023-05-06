@@ -4,6 +4,7 @@ import RootElement from "./components/rootEelement/RootEelement";
 import Home from "./pages/home/Home";
 import Avatar, { loader as fetchAvatarData } from "./pages/avatar/Avatar";
 import ErrorPage from "./pages/errorPage/ErrorPage";
+import MovieDetailPage from "./pages/movieDetailPage/MovieDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       { path: "/avatar", element: <Avatar />, loader: fetchAvatarData },
+      { path: "/:movieId", element: <MovieDetailPage /> },
     ],
   },
 ]);
