@@ -71,6 +71,18 @@
   padding-bottom: 2rem;
 }
 
+.movies__count {
+  color: #fff;
+  font-size: 1.3rem;
+  display: inline-block;
+  transform: translateY(-15px);
+  padding: 2px;
+}
+
+.movies__notFound {
+  color: #fff;
+}
+
 /* ANIMATIONS  */
 
 @keyframes zoomInOut {

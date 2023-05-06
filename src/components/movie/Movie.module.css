@@ -80,7 +80,7 @@
 }
 
 .movie__wrapper:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 .movie__wrapper:hover .movie__image {

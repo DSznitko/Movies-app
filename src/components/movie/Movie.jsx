@@ -1,11 +1,14 @@
-import React from "react";
-import classes from "./SearchedMovie.module.css";
+import React, { useContext } from "react";
+import MoviesContext from "../../context/MoviesContext";
+import classes from "./Movie.module.css";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
 
 const SearchedMovie = ({ movieData }) => {
   const { id, title, vote_average, poster_path } = movieData;
+
+  const { addFavMovieHandler } = useContext(MoviesContext);
 
   const voteColor = (voteAvr) => {
     if (voteAvr < 5) {
@@ -40,7 +43,10 @@ const SearchedMovie = ({ movieData }) => {
             {vote_average.toFixed(1)}
           </span>
         </p>
-        <button className={classes.movie__add}>
+        <button
+          onClick={() => addFavMovieHandler(movieData)}
+          className={classes.movie__add}
+        >
           add to fav. <FaHeart className={classes.fav__icon} />
         </button>
       </div>
