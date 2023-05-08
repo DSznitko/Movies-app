@@ -17,7 +17,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       { path: "/avatar", element: <Avatar />, loader: fetchAvatarData },
-      { path: "/:movieId", element: <MovieDetailPage /> },
+      {
+        path: "/:movieId",
+        element: <MovieDetailPage />,
+      },
     ],
   },
 ]);

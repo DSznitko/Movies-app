@@ -25,7 +25,7 @@ const SearchedMovie = ({ movieData }) => {
   return (
     <div className={classes.movie__wrapper}>
       <span className={classes.movie__title}>{title}</span>
-      <Link to={id}>
+      <Link to={`/${id}`}>
         <img
           className={classes.movie__image}
           src={

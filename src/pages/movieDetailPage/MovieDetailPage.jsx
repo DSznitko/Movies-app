@@ -1,7 +1,18 @@
 import React from "react";
 import classes from "./MovieDetailPage.module.css";
+import { useParams } from "react-router-dom";
+import useFetchData from "../../hooks/useFetch";
 
 const MovieDetailPage = () => {
+  const { movieId } = useParams();
+  const api_key = process.env.REACT_APP_API_KEY;
+
+  const { error, data } = useFetchData(
+    `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&id=${movieId}`
+  );
+
+  console.log(data);
+
   return (
     <>
       <div className={classes.movieDetail__wrapper}>
