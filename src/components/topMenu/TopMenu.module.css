@@ -83,23 +83,19 @@
   color: #fff;
 }
 
-/* ANIMATIONS  */
+.bump {
+  animation: bump 0.7s ease forwards;
+}
 
-@keyframes zoomInOut {
+/* ANIMATIONS */
+
+@keyframes bump {
   0% {
-    transform: scale(0);
-  }
-
-  40% {
-    transform: scale(1.3);
-  }
-
-  60% {
     transform: scale(1);
   }
 
-  80% {
-    transform: scale(1.1);
+  50% {
+    transform: scale(1.7);
   }
 
   100% {

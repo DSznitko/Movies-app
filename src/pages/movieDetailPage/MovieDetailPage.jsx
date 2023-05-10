@@ -2,13 +2,12 @@ import React from "react";
 import classes from "./MovieDetailPage.module.css";
 import { useParams } from "react-router-dom";
 import useFetchData from "../../hooks/useFetch";
-import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 
 const MovieDetailPage = () => {
   const { movieId } = useParams();
   const api_key = process.env.REACT_APP_API_KEY;
 
-  const { error, data } = useFetchData(
+  const { data } = useFetchData(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}`
   );
 

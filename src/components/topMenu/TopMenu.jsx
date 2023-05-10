@@ -10,7 +10,7 @@ import MoviesContext from "../../context/MoviesContext";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
-  const { favMovies } = useContext(MoviesContext);
+  const { favMovies, movieAdded, setMovieAdded } = useContext(MoviesContext);
   const { width } = useWidnowWidth();
 
   const [searchValue, setSesrchValue] = useState("");
@@ -23,6 +23,23 @@ const TopMenu = () => {
     let movies = data.results;
     setSearchedMovies(movies);
   }, [data]);
+
+  // add movie animation handling
+  useEffect(() => {
+    if (favMovies.length === 0) {
+      return;
+    }
+
+    setMovieAdded(true);
+
+    const timer = setTimeout(() => {
+      setMovieAdded(false);
+    }, 700);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [favMovies]);
 
   return (
     <>
@@ -42,7 +59,11 @@ const TopMenu = () => {
         <SearchInput setSesrchValue={setSesrchValue} />
         <div className={classes.favMovies}>
           <h3 className={classes.favMovies__title}>Your Movies</h3>
-          <FaHeart className={classes.favMovies__icon} />
+          <FaHeart
+            className={`${classes.favMovies__icon} ${
+              movieAdded ? classes.bump : ""
+            }`}
+          />
           <span className={classes.movies__count}>{favMovies.length}</span>
         </div>
       </div>
@@ -52,7 +73,6 @@ const TopMenu = () => {
             <Movie
               key={movie.id}
               movieData={movie}
-              searchedMovies={searchedMovies}
               setSearchedMovies={setSearchedMovies}
             />
           ))}

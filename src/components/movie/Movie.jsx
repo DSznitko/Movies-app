@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import MoviesContext from "../../context/MoviesContext";
 import classes from "./Movie.module.css";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
 
-const SearchedMovie = ({ movieData }) => {
+const SearchedMovie = ({ movieData, setSearchedMovies }) => {
   const { id, title, vote_average, poster_path } = movieData;
 
   const { addFavMovieHandler } = useContext(MoviesContext);
@@ -25,7 +25,7 @@ const SearchedMovie = ({ movieData }) => {
   return (
     <div className={classes.movie__wrapper}>
       <span className={classes.movie__title}>{title}</span>
-      <Link to={`/${id}`}>
+      <Link onClick={() => setSearchedMovies([])} to={`/${id}`}>
         <img
           className={classes.movie__image}
           src={
@@ -47,7 +47,8 @@ const SearchedMovie = ({ movieData }) => {
           onClick={() => addFavMovieHandler(movieData)}
           className={classes.movie__add}
         >
-          add to fav. <FaHeart className={classes.fav__icon} />
+          add to fav
+          <FaHeart className={classes.fav__icon} />
         </button>
       </div>
     </div>
