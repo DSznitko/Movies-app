@@ -2,9 +2,11 @@ import React from "react";
 import classes from "./MovieDetailPage.module.css";
 import { useParams } from "react-router-dom";
 import useFetchData from "../../hooks/useFetch";
+import useVoteColor from "../../hooks/useVoteColor";
 
 const MovieDetailPage = () => {
   const { movieId } = useParams();
+  const { voteColor } = useVoteColor();
   const api_key = process.env.REACT_APP_API_KEY;
 
   const { data } = useFetchData(
@@ -27,7 +29,7 @@ const MovieDetailPage = () => {
             <strong className={classes.bold}>Relase date: </strong>
             {release_date}
           </span>
-          <span className={classes.voteAvr}>
+          <span className={`${classes.voteAvr} ${voteColor(vote_average)}`}>
             {vote_average && vote_average.toFixed(1)}
           </span>
         </div>

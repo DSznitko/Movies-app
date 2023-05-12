@@ -1,26 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import MoviesContext from "../../context/MoviesContext";
 import classes from "./Movie.module.css";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
+import useVoteColor from "../../hooks/useVoteColor";
 
 const SearchedMovie = ({ movieData, setSearchedMovies }) => {
   const { id, title, vote_average, poster_path } = movieData;
+  const { voteColor } = useVoteColor();
 
   const { addFavMovieHandler } = useContext(MoviesContext);
-
-  const voteColor = (voteAvr) => {
-    if (voteAvr < 5) {
-      return classes.red;
-    }
-
-    if (voteAvr > 5 && voteAvr < 8) {
-      return classes.orange;
-    }
-
-    return classes.green;
-  };
 
   return (
     <div className={classes.movie__wrapper}>

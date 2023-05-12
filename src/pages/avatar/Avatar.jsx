@@ -3,24 +3,14 @@ import { useLoaderData } from "react-router-dom";
 import classes from "./Avatar.module.css";
 import avatarCastData from "./avatarCastData";
 import AvatarActor from "../../components/avatarActor/AvatarActor";
+import useVoteColor from "../../hooks/useVoteColor";
 
 const Avatar = () => {
   const avatarData = useLoaderData();
+  const { voteColor } = useVoteColor();
 
   const { title, overview, poster_path, release_date, vote_average } =
     avatarData.results[0];
-
-  const voteColor = (voteAvr) => {
-    if (voteAvr < 5) {
-      return classes.red;
-    }
-
-    if (voteAvr > 5 && voteAvr < 8) {
-      return classes.orange;
-    }
-
-    return classes.green;
-  };
 
   return (
     <div className={classes.avatar__wrapper}>
