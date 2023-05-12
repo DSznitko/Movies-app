@@ -6,16 +6,21 @@ import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
 import useVoteColor from "../../hooks/useVoteColor";
 
-const SearchedMovie = ({ movieData, setSearchedMovies }) => {
+const SearchedMovie = ({ movieData, setSearchedMovies, setSesrchValue }) => {
   const { id, title, vote_average, poster_path } = movieData;
   const { voteColor } = useVoteColor();
 
   const { addFavMovieHandler } = useContext(MoviesContext);
 
+  const resetSearchedValues = () => {
+    setSearchedMovies([]);
+    setSesrchValue("");
+  };
+
   return (
     <div className={classes.movie__wrapper}>
       <span className={classes.movie__title}>{title}</span>
-      <Link onClick={() => setSearchedMovies([])} to={`/${id}`}>
+      <Link onClick={() => resetSearchedValues()} to={`/${id}`}>
         <img
           className={classes.movie__image}
           src={

@@ -56,7 +56,10 @@ const TopMenu = () => {
           </span>
         )}
 
-        <SearchInput setSesrchValue={setSesrchValue} />
+        <SearchInput
+          setSesrchValue={setSesrchValue}
+          searchValue={searchValue}
+        />
         <div className={classes.favMovies}>
           <h3 className={classes.favMovies__title}>Your Movies</h3>
           <FaHeart
@@ -74,6 +77,7 @@ const TopMenu = () => {
               key={movie.id}
               movieData={movie}
               setSearchedMovies={setSearchedMovies}
+              setSesrchValue={setSesrchValue}
             />
           ))}
       </ul>
