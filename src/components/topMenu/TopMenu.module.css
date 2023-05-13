@@ -87,6 +87,10 @@
   animation: bump 0.7s ease forwards;
 }
 
+.fav__link {
+  text-decoration: none;
+}
+
 /* ANIMATIONS */
 
 @keyframes bump {

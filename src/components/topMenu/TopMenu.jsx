@@ -41,10 +41,15 @@ const TopMenu = () => {
     };
   }, [favMovies]);
 
+  const resetSearch = () => {
+    setSearchedMovies([]);
+    setSesrchValue("");
+  };
+
   return (
     <>
       <div className={classes.topMenu}>
-        <Link to="/" className={classes.logo}>
+        <Link onClick={() => resetSearch()} to="/" className={classes.logo}>
           <h1 className={classes.headerLogo}>
             <span className={classes.blue}>Mo</span>vies
             <span className={classes.blue}>A</span>pp
@@ -60,15 +65,17 @@ const TopMenu = () => {
           setSesrchValue={setSesrchValue}
           searchValue={searchValue}
         />
-        <div className={classes.favMovies}>
-          <h3 className={classes.favMovies__title}>Your Movies</h3>
-          <FaHeart
-            className={`${classes.favMovies__icon} ${
-              movieAdded ? classes.bump : ""
-            }`}
-          />
-          <span className={classes.movies__count}>{favMovies.length}</span>
-        </div>
+        <Link className={classes.fav__link} to="/fav-movies">
+          <div className={classes.favMovies}>
+            <h3 className={classes.favMovies__title}>Your Movies</h3>
+            <FaHeart
+              className={`${classes.favMovies__icon} ${
+                movieAdded ? classes.bump : ""
+              }`}
+            />
+            <span className={classes.movies__count}>{favMovies.length}</span>
+          </div>
+        </Link>
       </div>
       <ul className={classes.movies__list}>
         {searchedMovies &&

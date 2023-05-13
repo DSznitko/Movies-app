@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Avatar, { loader as fetchAvatarData } from "./pages/avatar/Avatar";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import MovieDetailPage from "./pages/movieDetailPage/MovieDetailPage";
+import FavoriteMovies from "./pages/favoriteMovies/FavoriteMovies";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         path: "/:movieId",
         element: <MovieDetailPage />,
       },
+      { path: "fav-movies", element: <FavoriteMovies /> },
     ],
   },
 ]);
