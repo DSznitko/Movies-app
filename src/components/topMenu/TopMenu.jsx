@@ -65,7 +65,11 @@ const TopMenu = () => {
           setSesrchValue={setSesrchValue}
           searchValue={searchValue}
         />
-        <Link className={classes.fav__link} to="/fav-movies">
+        <Link
+          onClick={() => resetSearch()}
+          className={classes.fav__link}
+          to="/fav-movies"
+        >
           <div className={classes.favMovies}>
             <h3 className={classes.favMovies__title}>Your Movies</h3>
             <FaHeart
