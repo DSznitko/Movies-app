@@ -7,8 +7,11 @@ export const MoviesProvider = ({ children }) => {
   const [movieAdded, setMovieAdded] = useState(false);
 
   const addFavMovieHandler = (movie) => {
+    if (favMovies.length + 1 && favMovies.find((el) => el.movie === movie)) {
+      return alert("you have already added this movie!!");
+    }
     setFavMovies((prevMovie) => {
-      return [...prevMovie, { movie, added: true }];
+      return [...prevMovie, { movie }];
     });
     setMovieAdded(true);
   };
