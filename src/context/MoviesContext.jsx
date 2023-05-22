@@ -1,10 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
-  const [favMovies, setFavMovies] = useState([]);
+  const sotredFavoriteMovies =
+    JSON.parse(localStorage.getItem("favorite-movies")) || [];
+
+  const [favMovies, setFavMovies] = useState(sotredFavoriteMovies);
   const [movieAdded, setMovieAdded] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("favorite-movies", JSON.stringify(favMovies));
+  }, [favMovies]);
 
   const addFavMovieHandler = (movie) => {
     if (favMovies.length + 1 && favMovies.find((el) => el.movie === movie)) {
