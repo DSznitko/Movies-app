@@ -1,0 +1,22 @@
+.movie__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 2rem 1rem;
+}
+
+.movie__title {
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.movie__img {
+  height: 450px;
+  max-width: 400px;
+  object-fit: cover;
+}

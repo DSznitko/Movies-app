@@ -18,7 +18,7 @@ const FavoriteMovies = () => {
           </p>
         ) : (
           favMovies.map((movie) => {
-            return <FavMovie key={movie.movie.id} favMovieData={movie} />;
+            return <FavMovie key={movie.movie.id} favMovieData={movie.movie} />;
           })
         )}
       </div>
