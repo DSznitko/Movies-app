@@ -23,6 +23,12 @@ export const MoviesProvider = ({ children }) => {
     setMovieAdded(true);
   };
 
+  const removeMovieHandler = (id) => {
+    setFavMovies(
+      favMovies.filter((favoriteMovie) => favoriteMovie.movie.id !== id)
+    );
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -31,6 +37,7 @@ export const MoviesProvider = ({ children }) => {
         addFavMovieHandler,
         movieAdded,
         setMovieAdded,
+        removeMovieHandler,
       }}
     >
       {children}
