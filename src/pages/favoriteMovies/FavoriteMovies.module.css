@@ -25,3 +25,10 @@
   color: #fff;
   font-weight: bold;
 }
+
+.favmovies__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

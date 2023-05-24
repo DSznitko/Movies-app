@@ -17,9 +17,13 @@ const FavoriteMovies = () => {
             You haven't added any Movies to your list
           </p>
         ) : (
-          favMovies.map((movie) => {
-            return <FavMovie key={movie.movie.id} favMovieData={movie.movie} />;
-          })
+          <ul className={classes.favmovies__list}>
+            {favMovies.map((movie) => {
+              return (
+                <FavMovie key={movie.movie.id} favMovieData={movie.movie} />
+              );
+            })}
+          </ul>
         )}
       </div>
     </>
