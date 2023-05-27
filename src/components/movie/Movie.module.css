@@ -12,6 +12,8 @@
   align-self: center;
   margin-bottom: 0.7rem;
   border-bottom: 2px solid var(--main-color);
+  max-width: 300px;
+  text-align: center;
 }
 
 .movie__image {
@@ -91,7 +93,18 @@
 
 @media (max-width: 550px) {
   .movie__title {
-    max-width: 70%;
+    max-width: 80%;
     text-align: center;
+  }
+
+  .movie__image {
+    max-width: 100%;
+  }
+  .movie__wrapper {
+    align-items: center;
+  }
+
+  .movie__average {
+    margin-right: 2rem;
   }
 }

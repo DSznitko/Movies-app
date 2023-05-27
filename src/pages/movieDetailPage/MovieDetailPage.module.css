@@ -10,13 +10,12 @@
 .title {
   color: #fff;
   font-weight: 300;
-  font-size: var(--h1);
+  font-size: calc(var(--h1) - 15px);
   letter-spacing: 1px;
-  font-family: var(--logo-font);
   padding-bottom: 0.6rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--main-color);
-  max-width: 500px;
+  max-width: 400px;
   text-align: center;
 }
 
@@ -60,4 +59,39 @@
   font-size: 1.5rem;
   padding: 0.5rem 0.8rem;
   border-radius: 10px;
+}
+
+/* MEDIA START */
+
+@media (max-width: 550px) {
+  .image {
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: var(--h1-mobile);
+  }
+
+  .date__voteAvr {
+    max-width: 300px;
+  }
+
+  .date,
+  .voteAvr {
+    font-size: 1.2rem;
+  }
+
+  .date {
+    margin-right: 2rem;
+  }
+
+  .voteAvr {
+    margin-left: 2rem;
+  }
+
+  .description {
+    padding: 0 0.4rem;
+    max-width: 95%;
+    padding: 0;
+  }
 }
