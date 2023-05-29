@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import classes from "./PopularMovies.module.css";
 import useFetchData from "../../hooks/useFetch";
-import PopularMovie from "../popularMovie/PopularMovie";
+import { FaHeart } from "react-icons/fa";
 
 /* SWIPER IMPORTS */
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -30,17 +31,36 @@ const PopularMovies = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
+        slidesPerView={4}
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false,
         }}
+        className={classes.swiper}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        style={{ display: "flex", justifyContent: "center" }}
       >
         {popular &&
           popular.map((movie) => (
-            <PopularMovie key={movie.id} popularData={movie} />
+            <SwiperSlide className={classes.slide} key={movie.id}>
+              <h3 className={classes.movie__title}>{movie.title}</h3>
+              <Link to={`/${movie.id}`}>
+                <img
+                  className={classes.img}
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              </Link>
+              <div className={classes.stats__add}>
+                <span className={classes.popularity}>
+                  <span className={classes.vote}>Vote Count:</span>
+                  {movie.vote_count}
+                </span>
+                <button className={classes.add}>
+                  add to fav <FaHeart className={classes.heart} />
+                </button>
+              </div>
+            </SwiperSlide>
           ))}
       </Swiper>
     </section>

@@ -17,8 +17,10 @@ html {
   --light-black: rgba(0, 0, 0, 0.4);
   --h1: 4rem;
   --h2: 3.5rem;
+  --h3: 2rem;
   --h1-mobile: 2.5rem;
   --h2-mobile: 2rem;
+  --h3-mobile: 1.5rem;
 }
 
 body {
@@ -42,4 +44,8 @@ p {
 .green {
   background-color: rgb(0, 99, 0);
   color: #fff;
+}
+
+.swiper-button-prev {
+  margin-right: 200px;
 }
