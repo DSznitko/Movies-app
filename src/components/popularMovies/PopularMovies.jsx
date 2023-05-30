@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import classes from "./PopularMovies.module.css";
 import useFetchData from "../../hooks/useFetch";
 import { FaHeart } from "react-icons/fa";
 import MoviesContext from "../../context/MoviesContext";
+import useWidnowWidth from "../../hooks/useWidnowWidth";
 
 /* SWIPER IMPORTS */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,7 +17,7 @@ const PopularMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
   const [popular, setPopular] = useState([]);
   const { addFavMovieHandler } = useContext(MoviesContext);
-
+  const { width } = useWidnowWidth();
   const { data } = useFetchData(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
   );
@@ -24,6 +25,18 @@ const PopularMovies = () => {
   useEffect(() => {
     setPopular(data.results);
   }, [data]);
+
+  /* Show slides function */
+  const slidesPerViewHandler = useMemo(() => {
+    if (width < 1400 && width > 768) {
+      return 3;
+    }
+    if (width < 768) {
+      return 1;
+    } else {
+      return 4;
+    }
+  }, [width]);
 
   return (
     <section className={classes.wrapper}>
@@ -33,7 +46,7 @@ const PopularMovies = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        slidesPerView={4}
+        slidesPerView={slidesPerViewHandler}
         autoplay={{
           delay: 3800,
           disableOnInteraction: false,
