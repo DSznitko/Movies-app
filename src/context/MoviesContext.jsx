@@ -14,7 +14,10 @@ export const MoviesProvider = ({ children }) => {
   }, [favMovies]);
 
   const addFavMovieHandler = (movie) => {
-    if (favMovies.length + 1 && favMovies.find((el) => el.movie === movie)) {
+    if (
+      favMovies.length + 1 &&
+      favMovies.find((el) => el.movie.id === movie.id)
+    ) {
       return alert("you have already added this movie!!");
     }
     setFavMovies((prevMovie) => {

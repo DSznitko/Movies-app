@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./PopularMovies.module.css";
 import useFetchData from "../../hooks/useFetch";
 import { FaHeart } from "react-icons/fa";
+import MoviesContext from "../../context/MoviesContext";
 
 /* SWIPER IMPORTS */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,6 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 const PopularMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
   const [popular, setPopular] = useState([]);
+  const { addFavMovieHandler } = useContext(MoviesContext);
 
   const { data } = useFetchData(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
@@ -33,7 +35,7 @@ const PopularMovies = () => {
         centeredSlides={true}
         slidesPerView={4}
         autoplay={{
-          delay: 4000,
+          delay: 3800,
           disableOnInteraction: false,
         }}
         className={classes.swiper}
@@ -56,7 +58,10 @@ const PopularMovies = () => {
                   <span className={classes.vote}>Vote Count:</span>
                   {movie.vote_count}
                 </span>
-                <button className={classes.add}>
+                <button
+                  onClick={() => addFavMovieHandler(movie)}
+                  className={classes.add}
+                >
                   add to fav <FaHeart className={classes.heart} />
                 </button>
               </div>

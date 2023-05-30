@@ -44,4 +44,53 @@
 .img {
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.img:hover {
+  box-shadow: 0px 0px 25px 3px var(--main-color);
+}
+
+.stats__add {
+  margin-top: 0.4rem;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popularity {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.vote {
+  color: var(--main-color);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.add {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--main-color);
+  border-radius: 2rem;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease;
+  color: #fff;
+}
+
+.add:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.heart {
+  margin-left: 0.5rem;
+  color: var(--main-color);
+  font-size: 2rem;
 }
