@@ -9,16 +9,15 @@
 
 .title {
   font-size: var(--h2);
-  font-weight: 200;
+  font-weight: 300;
   color: #fff;
   letter-spacing: 1px;
   padding-bottom: 0.2rem;
-  border-bottom: 2px solid #fff;
+  border-bottom: 1px solid var(--main-color);
   margin-bottom: 4rem;
 }
 
 .blue__bold {
-  font-weight: bold;
   color: var(--main-color);
 }
 
@@ -55,7 +54,7 @@
 
 .stats__add {
   margin-top: 0.4rem;
-  width: 350px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,4 +92,43 @@
   margin-left: 0.5rem;
   color: var(--main-color);
   font-size: 2rem;
+}
+
+/* MEDIA START */
+
+@media (max-width: 980px) {
+  .title {
+    font-size: var(--h2-mobile);
+  }
+
+  .movie__title {
+    font-size: var(--h3-mobile);
+  }
+}
+
+@media (max-width: 770px) {
+  .img {
+    height: 450px;
+  }
+
+  .stats__add {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .img {
+    height: 500px;
+  }
+
+  .vote,
+  .add {
+    font-size: 1.3rem;
+  }
+
+  .title {
+    margin-bottom: 2.5rem;
+  }
 }
