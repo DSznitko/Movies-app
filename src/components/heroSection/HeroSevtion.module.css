@@ -35,3 +35,29 @@
   max-width: 50%;
   object-fit: cover;
 }
+
+/* Media Start */
+
+@media (max-width: 550px) {
+  .hero {
+    flex-direction: column;
+    padding-top: 5rem;
+  }
+
+  .title {
+    font-size: var(--h2-mobile);
+    text-align: center;
+  }
+
+  .paragraph {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .content {
+    margin-bottom: 3rem;
+  }
+
+  .img {
+    max-width: 90%;
+  }
+}
