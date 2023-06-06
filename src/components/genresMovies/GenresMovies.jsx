@@ -2,8 +2,15 @@ import React from "react";
 import classes from "./GenresMovies.module.css";
 import GenreButtons from "../genreButtons/GenreButtons";
 import Pagination from "../pagination/Pagination";
+import useFetchData from "../../hooks/useFetch";
 
 const GenresMovies = () => {
+  const api_key = process.env.REACT_APP_API_KEY;
+
+  const { data } = useFetchData(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
+  );
+
   return (
     <>
       <section className={classes.movie__genres}>
