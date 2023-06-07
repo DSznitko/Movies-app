@@ -29,3 +29,5 @@ export const GenreMoviesContextProvider = ({ children }) => {
     </GenreMoviesContext.Provider>
   );
 };
+
+export default GenreMoviesContext;
