@@ -14,10 +14,9 @@
   padding-bottom: 0.2rem;
 }
 
-.blue__bold {
+.blue {
   color: var(--main-color);
   margin-right: 0.8rem;
-  font-weight: bold;
 }
 
 .genre__movies {

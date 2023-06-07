@@ -21,7 +21,7 @@ const GenresMovies = () => {
     <>
       <section className={classes.movie__genres}>
         <h3 className={classes.title}>
-          <span className={classes.blue__bold}>Choose</span>by genre
+          <span className={classes.blue}>Choose</span>by genre
         </h3>
         <GenreButtons />
         <ul className={classes.genre__movies}>
