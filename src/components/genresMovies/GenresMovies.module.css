@@ -1,0 +1,28 @@
+.movie__genres {
+  padding-top: 7rem;
+  background-color: var(--dark-black);
+  margin: 0 auto;
+}
+
+.title {
+  font-size: var(--h2);
+  color: #fff;
+  font-weight: 300;
+  border-bottom: 1px solid var(--main-color);
+  width: max-content;
+  margin: 4rem auto;
+  padding-bottom: 0.2rem;
+}
+
+.blue__bold {
+  color: var(--main-color);
+  margin-right: 0.8rem;
+  font-weight: bold;
+}
+
+.genre__movies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
