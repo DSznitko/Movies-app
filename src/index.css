@@ -49,3 +49,7 @@ p {
 .swiper-button-prev {
   margin-right: 200px;
 }
+
+button {
+  font-family: var(--main-font);
+}

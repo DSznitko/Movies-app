@@ -1,0 +1,15 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.genre__button {
+  margin: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  color: #fff;
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  cursor: pointer;
+  letter-spacing: 1px;
+}
