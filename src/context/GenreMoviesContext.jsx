@@ -4,6 +4,7 @@ const GenreMoviesContext = createContext();
 
 export const GenreMoviesContextProvider = ({ children }) => {
   const [genreMovies, setGenreMovies] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(0);
   const [page, setPage] = useState(1);
 
   const nextPageHandler = () => {
