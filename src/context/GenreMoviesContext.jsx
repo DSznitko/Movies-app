@@ -24,6 +24,8 @@ export const GenreMoviesContextProvider = ({ children }) => {
         setPage,
         nextPageHandler,
         prevPageHandler,
+        activeGenre,
+        setActiveGenre,
       }}
     >
       {children}
