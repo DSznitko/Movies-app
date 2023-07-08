@@ -8,26 +8,17 @@ import GenreMovie from "../genreMovie/GenreMovie";
 
 const GenresMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
-  const { genreMovies, setGenreMovies, page, activeGenre } =
+  const { setGenreMovies, filteredMovies, setFilteredMovies, page } =
     useContext(GenreMoviesContext);
   const { data } = useFetchData(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${page}`
   );
 
   useEffect(() => {
-    if (activeGenre === 0) {
-      setGenreMovies(data.results);
-      return;
-    }
+    setGenreMovies(data.results);
+    setFilteredMovies(data.results);
+  }, [data]);
 
-    let filteredMovies = genreMovies.filter((movie) =>
-      movie.genre_ids.includes(activeGenre)
-    );
-
-    setGenreMovies(filteredMovies);
-  }, [data, activeGenre]);
-
-  console.log(genreMovies);
   return (
     <>
       <section className={classes.movie__genres}>
@@ -36,9 +27,9 @@ const GenresMovies = () => {
         </h3>
         <GenreButtons />
         <ul className={classes.genre__movies}>
-          {genreMovies &&
-            genreMovies.map((genreMovie) => {
-              return <GenreMovie key={genreMovie.id} movieData={genreMovie} />;
+          {filteredMovies &&
+            filteredMovies.map((movie) => {
+              return <GenreMovie key={movie.id} movieData={movie} />;
             })}
         </ul>
         <Pagination />
