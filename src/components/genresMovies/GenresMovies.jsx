@@ -5,6 +5,7 @@ import Pagination from "../pagination/Pagination";
 import useFetchData from "../../hooks/useFetch";
 import GenreMoviesContext from "../../context/GenreMoviesContext";
 import GenreMovie from "../genreMovie/GenreMovie";
+import { motion, AnimatePresence } from "framer-motion";
 
 const GenresMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
@@ -26,12 +27,12 @@ const GenresMovies = () => {
           <span className={classes.blue}>Choose</span>by genre
         </h3>
         <GenreButtons />
-        <ul className={classes.genre__movies}>
+        <motion.ul className={classes.genre__movies}>
           {filteredMovies &&
             filteredMovies.map((movie) => {
               return <GenreMovie key={movie.id} movieData={movie} />;
             })}
-        </ul>
+        </motion.ul>
         <Pagination />
       </section>
     </>

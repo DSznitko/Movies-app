@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 const GenreMoviesContext = createContext();
 
 export const GenreMoviesContextProvider = ({ children }) => {
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [genreMovies, setGenreMovies] = useState([]);
   const [activeGenre, setActiveGenre] = useState(0);
   const [page, setPage] = useState(1);
@@ -26,6 +27,8 @@ export const GenreMoviesContextProvider = ({ children }) => {
         prevPageHandler,
         activeGenre,
         setActiveGenre,
+        filteredMovies,
+        setFilteredMovies,
       }}
     >
       {children}
