@@ -1,0 +1,22 @@
+.wrapper {
+  background-color: var(--dark-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--h2);
+  color: #fff;
+  font-weight: 300;
+  border-bottom: 1px solid var(--main-color);
+  width: max-content;
+  margin: 4rem auto;
+  padding-bottom: 0.2rem;
+}
+
+.blue {
+  color: var(--main-color);
+  margin-right: 0.8rem;
+}
