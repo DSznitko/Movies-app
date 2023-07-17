@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./AccordinItem.module.css";
 
 const AccordinItem = (props) => {
-  const { answer, question } = props;
+  const { answer, question, index } = props;
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const accordinHandler = (i) => {
+    if (selectedIndex === i) {
+      return setSelectedIndex(null);
+    }
+    setSelectedIndex(i);
+  };
 
   return (
-    <div className={classes.wrapper}>
+    <div onClick={() => accordinHandler(index)} className={classes.wrapper}>
       <div className={classes.question__box}>
         <p className={classes.question__text}>{question}</p>
-        <span className={classes.icon}>+</span>
+        <span className={classes.icon}>
+          {selectedIndex === index ? "-" : "+"}
+        </span>
       </div>
-      <p className={classes.answer}>{answer}</p>
+      <p
+        className={
+          selectedIndex === index
+            ? `${classes.answer} ${classes.answer__show}`
+            : classes.answer
+        }
+      >
+        {answer}
+      </p>
     </div>
   );
 };
