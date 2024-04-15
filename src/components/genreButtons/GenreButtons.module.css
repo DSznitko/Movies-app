@@ -30,3 +30,9 @@
   cursor: pointer;
   letter-spacing: 1px;
 }
+
+@media (max-width: 600px) {
+  .buttons {
+    flex-wrap: wrap;
+  }
+}

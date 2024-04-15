@@ -44,3 +44,9 @@
   padding: 1rem;
   max-height: 999px;
 }
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 95%;
+  }
+}

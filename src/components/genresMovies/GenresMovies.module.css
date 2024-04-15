@@ -25,3 +25,9 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+@media (max-width: 600px) {
+  .title {
+    font-size: var(--h2-mobile);
+  }
+}
