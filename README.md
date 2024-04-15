@@ -1,4 +1,3 @@
-## Project in progress...
 
 ## Available Scripts
 
