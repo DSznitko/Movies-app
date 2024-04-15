@@ -15,6 +15,7 @@ const TopMenu = () => {
 
   const [searchValue, setSesrchValue] = useState("");
   const [searchedMovies, setSearchedMovies] = useState([]);
+  const [showSerchInput, setShowSearchInput] = useState(null);
   const { data } = useFetchData(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=${searchValue}`
   );
@@ -44,7 +45,25 @@ const TopMenu = () => {
   const resetSearch = () => {
     setSearchedMovies([]);
     setSesrchValue("");
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  // show or hide searchInput based on window scroll position
+  useEffect(() => {
+    const showSearchInputHandler = () => {
+      return window.scrollY <= 400
+        ? setShowSearchInput(true)
+        : setShowSearchInput(false);
+    };
+
+    window.addEventListener("scroll", showSearchInputHandler);
+
+    return () => window.removeEventListener("scroll", showSearchInputHandler);
+  }, []);
+
+  const searchInput = showSerchInput && (
+    <SearchInput setSesrchValue={setSesrchValue} searchValue={searchValue} />
+  );
 
   return (
     <>
@@ -60,11 +79,7 @@ const TopMenu = () => {
             The best movies search platform!
           </span>
         )}
-
-        <SearchInput
-          setSesrchValue={setSesrchValue}
-          searchValue={searchValue}
-        />
+        {searchInput}
         <Link
           onClick={() => resetSearch()}
           className={classes.fav__link}
