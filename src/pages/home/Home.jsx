@@ -5,6 +5,7 @@ import HeroSection from "../../components/heroSection/HeroSection";
 import GenresMovies from "../../components/genresMovies/GenresMovies";
 import { GenreMoviesContextProvider } from "../../context/GenreMoviesContext";
 import Accordin from "../../components/accordin/Accordin";
+
 const Home = () => {
   return (
     <>

@@ -1,0 +1,13 @@
+.socialMedia {
+  display: flex;
+  margin: 0 1.5rem;
+}
+
+.socialMediaItem__fb,
+.socialMediaItem__insta,
+.socialMediaItem__tiktok {
+  list-style: none;
+  margin: 0 0.5rem;
+  color: var(--main-color);
+  font-size: 2rem;
+}
