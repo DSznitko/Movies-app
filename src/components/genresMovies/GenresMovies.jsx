@@ -5,7 +5,7 @@ import Pagination from "../pagination/Pagination";
 import useFetchData from "../../hooks/useFetch";
 import GenreMoviesContext from "../../context/GenreMoviesContext";
 import GenreMovie from "../genreMovie/GenreMovie";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const GenresMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
@@ -18,7 +18,7 @@ const GenresMovies = () => {
   useEffect(() => {
     setGenreMovies(data.results);
     setFilteredMovies(data.results);
-  }, [data]);
+  }, [setFilteredMovies, setGenreMovies, data]);
 
   return (
     <>

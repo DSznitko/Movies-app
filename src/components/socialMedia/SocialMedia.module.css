@@ -10,4 +10,12 @@
   margin: 0 0.5rem;
   color: var(--main-color);
   font-size: 2rem;
+  transition: all 0.5s ease;
+  border: none;
+}
+
+.socialMediaItem__fb:hover,
+.socialMediaItem__insta:hover,
+.socialMediaItem__tiktok:hover {
+  transform: scale(1.1) translateY(-4px);
 }
