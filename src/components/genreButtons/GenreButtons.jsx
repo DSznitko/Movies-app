@@ -1,27 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import classes from "./GenreButtons.module.css";
 import GenreMoviesContext from "../../context/GenreMoviesContext";
 
 const GenreButtons = () => {
-  const {
-    setActiveGenre,
-    activeGenre,
-    filteredMovies,
-    setFilteredMovies,
-    genreMovies,
-  } = useContext(GenreMoviesContext);
-
-  useEffect(() => {
-    if (activeGenre === 0) {
-      setFilteredMovies(genreMovies);
-      return;
-    }
-
-    const currentFilteredMovies = genreMovies.filter((movie) =>
-      movie.genre_ids.includes(activeGenre)
-    );
-    setFilteredMovies(currentFilteredMovies);
-  }, [activeGenre]);
+  const { setActiveGenre, activeGenre } = useContext(GenreMoviesContext);
 
   return (
     <>
