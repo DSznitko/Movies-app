@@ -2,6 +2,7 @@
   margin: 0 auto;
   background-color: var(--dark-black);
   width: 100%;
+  padding-top: 10rem;
 }
 
 .main__content {
@@ -140,5 +141,9 @@
     color: #fff;
     max-width: 85%;
     word-spacing: 2px;
+  }
+
+  .avatar__wrapper {
+    padding-top: 11.5rem;
   }
 }

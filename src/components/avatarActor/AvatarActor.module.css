@@ -6,7 +6,7 @@
 }
 
 .actor__img {
-  width: 130px;
+  width: 150px;
   height: 200px;
   object-fit: cover;
   border-radius: 12px;
@@ -22,4 +22,15 @@
   letter-spacing: 1px;
   margin-top: 0.8rem;
   font-size: 1.3rem;
+}
+
+@media (max-width: 500px) {
+  .actor__content {
+    margin: 1rem 0.7rem;
+  }
+
+  .actor__img {
+    width: 140px;
+    height: 180px;
+  }
 }
