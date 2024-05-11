@@ -15,7 +15,7 @@ const TopMenu = () => {
 
   const [searchValue, setSesrchValue] = useState("");
   const [searchedMovies, setSearchedMovies] = useState([]);
-  const [showSerchInput, setShowSearchInput] = useState(null);
+  const [showSerchInput, setShowSearchInput] = useState(true);
   const { data } = useFetchData(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=${searchValue}`
   );
