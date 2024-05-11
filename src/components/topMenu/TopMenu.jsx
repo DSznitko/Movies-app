@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import { FaHeart } from "react-icons/fa";
 import classes from "./TopMenu.module.css";
 import { Link } from "react-router-dom";
@@ -65,6 +65,30 @@ const TopMenu = () => {
     <SearchInput setSesrchValue={setSesrchValue} searchValue={searchValue} />
   );
 
+  const showMovies = useMemo(() => {
+    if (searchedMovies.length === 0 && searchValue !== "")
+      return (
+        <p className={classes.movies_notFound}>
+          No movies found please type another title
+        </p>
+      );
+
+    if (searchedMovies.length > 0)
+      return (
+        <ul className={classes.movies__list}>
+          {searchedMovies.map((movie) => (
+            <Movie
+              key={movie.id}
+              movieData={movie}
+              setSearchedMovies={setSearchedMovies}
+              setSesrchValue={setSesrchValue}
+            />
+          ))}
+        </ul>
+      );
+    else return null;
+  }, [searchedMovies, searchValue]);
+
   return (
     <>
       <div className={classes.topMenu}>
@@ -96,17 +120,7 @@ const TopMenu = () => {
           </div>
         </Link>
       </div>
-      <ul className={classes.movies__list}>
-        {searchedMovies &&
-          searchedMovies.map((movie) => (
-            <Movie
-              key={movie.id}
-              movieData={movie}
-              setSearchedMovies={setSearchedMovies}
-              setSesrchValue={setSesrchValue}
-            />
-          ))}
-      </ul>
+      {showMovies}
     </>
   );
 };
