@@ -154,4 +154,14 @@
     margin: 6.5rem auto 0 auto;
     padding-top: 3rem;
   }
+
+  .movies_notFound {
+    margin: 10rem 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .movies_notFound {
+    margin: 11.8rem 0;
+  }
 }

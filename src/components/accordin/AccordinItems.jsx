@@ -24,7 +24,7 @@ const AccordinItems = [
     id: "q4",
     questionText: "Is MoviesApp good for children?",
     answer:
-      "The Netflix Childrens experience is included in your membership to give parents control while children enjoy family-friendly TV programmes and films in their own space.Childrens profiles come with PIN-protected parental controls that let you restrict the maturity rating of content children can watch and block specific titles you don't want children to see.",
+      "The MoviesApp Childrens experience is included in your membership to give parents control while children enjoy family-friendly TV programmes and films in their own space.Childrens profiles come with PIN-protected parental controls that let you restrict the maturity rating of content children can watch and block specific titles you don't want children to see.",
   },
 
   {

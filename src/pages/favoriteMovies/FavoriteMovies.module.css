@@ -32,3 +32,9 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+@media (max-width: 540px) {
+  .wrapper {
+    padding-top: 13rem;
+  }
+}

@@ -15,4 +15,8 @@
   .footer {
     flex-wrap: wrap;
   }
+
+  .footer__text {
+    margin-left: 0;
+  }
 }

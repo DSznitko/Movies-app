@@ -66,7 +66,9 @@ const TopMenu = () => {
   );
 
   const showMovies = useMemo(() => {
-    if (searchedMovies.length === 0 && searchValue !== "")
+    if (searchedMovies === undefined) return;
+
+    if (searchedMovies.length === 0 && searchValue !== "" && showSerchInput)
       return (
         <p className={classes.movies_notFound}>
           No movies found please type another title
@@ -87,7 +89,7 @@ const TopMenu = () => {
         </ul>
       );
     else return null;
-  }, [searchedMovies, searchValue]);
+  }, [searchedMovies, searchValue, showSerchInput]);
 
   return (
     <>

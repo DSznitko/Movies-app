@@ -83,6 +83,7 @@
   .banner {
     width: 95%;
     height: 350px;
+    margin-top: 11rem;
   }
 
   .banner__content {

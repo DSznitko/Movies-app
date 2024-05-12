@@ -95,3 +95,9 @@
     padding: 0;
   }
 }
+
+@media (max-width: 400px) {
+  .movieDetail__wrapper {
+    padding-top: 13rem;
+  }
+}
