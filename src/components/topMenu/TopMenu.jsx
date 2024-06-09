@@ -7,6 +7,7 @@ import useFetchData from "../../hooks/useFetch";
 import Movie from "../movie/Movie";
 import useWidnowWidth from "../../hooks/useWidnowWidth";
 import MoviesContext from "../../context/MoviesContext";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
@@ -16,7 +17,7 @@ const TopMenu = () => {
   const [searchValue, setSesrchValue] = useState("");
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [showSerchInput, setShowSearchInput] = useState(true);
-  const { data } = useFetchData(
+  const { data, loading } = useFetchData(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=${searchValue}`
   );
 
@@ -60,6 +61,8 @@ const TopMenu = () => {
 
     return () => window.removeEventListener("scroll", showSearchInputHandler);
   }, []);
+
+  const fetchingText = "Fetching Movies...";
 
   const searchInput = showSerchInput && (
     <SearchInput setSesrchValue={setSesrchValue} searchValue={searchValue} />
@@ -121,6 +124,7 @@ const TopMenu = () => {
             <span className={classes.movies__count}>{favMovies.length}</span>
           </div>
         </Link>
+        {loading && <LoadingIndicator title={fetchingText} />}
       </div>
       {showMovies}
     </>

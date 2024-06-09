@@ -5,10 +5,12 @@ import Pagination from "../pagination/Pagination";
 import GenreMoviesContext from "../../context/GenreMoviesContext";
 import GenreMovie from "../genreMovie/GenreMovie";
 import { motion } from "framer-motion";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const GenresMovies = () => {
-  const { filteredMovies } = useContext(GenreMoviesContext);
-
+  const { filteredMovies, loading } = useContext(GenreMoviesContext);
+  const loadingText = "Loading movies...";
+  console.log(loading);
   return (
     <>
       <section className={classes.movie__genres}>
@@ -16,6 +18,7 @@ const GenresMovies = () => {
           <span className={classes.blue}>Choose</span>by genre
         </h3>
         <GenreButtons />
+        {loading && <LoadingIndicator title={loadingText} />}
         <motion.ul className={classes.genre__movies}>
           {filteredMovies &&
             filteredMovies.map((movie) => {

@@ -9,7 +9,9 @@ const useFetchData = (url) => {
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
+
     setLoading(true);
+
     axios
       .get(url, { signal })
       .then((res) => {
@@ -27,7 +29,7 @@ const useFetchData = (url) => {
     };
   }, [url]);
 
-  return { error, data };
+  return { error, data, loading };
 };
 
 export default useFetchData;

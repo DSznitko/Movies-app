@@ -15,7 +15,7 @@ export const GenreMoviesContextProvider = ({ children }) => {
       ? `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=${page}`
       : `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_genres=${activeGenre}&language=en-US&page=${page}`;
 
-  const { data } = useFetchData(API_CALL);
+  const { data, loading } = useFetchData(API_CALL);
 
   useEffect(() => {
     setFilteredMovies(data.results);
@@ -42,6 +42,7 @@ export const GenreMoviesContextProvider = ({ children }) => {
         setActiveGenre,
         filteredMovies,
         setFilteredMovies,
+        loading,
       }}
     >
       {children}
