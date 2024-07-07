@@ -4,8 +4,6 @@ import useFetchData from "../hooks/useFetch";
 const GenreMoviesContext = createContext();
 
 export const GenreMoviesContextProvider = ({ children }) => {
-  const [filteredMovies, setFilteredMovies] = useState([]);
-  const [genreMovies, setGenreMovies] = useState([]);
   const [activeGenre, setActiveGenre] = useState(0);
   const [page, setPage] = useState(1);
 
@@ -17,9 +15,7 @@ export const GenreMoviesContextProvider = ({ children }) => {
 
   const { data, loading } = useFetchData(API_CALL);
 
-  useEffect(() => {
-    setFilteredMovies(data.results);
-  }, [data]);
+  const filteredMovies = data.results;
 
   const nextPageHandler = useCallback(() => {
     return setPage((prev) => prev + 1);
@@ -32,8 +28,6 @@ export const GenreMoviesContextProvider = ({ children }) => {
   return (
     <GenreMoviesContext.Provider
       value={{
-        genreMovies,
-        setGenreMovies,
         page,
         setPage,
         nextPageHandler,
@@ -41,7 +35,6 @@ export const GenreMoviesContextProvider = ({ children }) => {
         activeGenre,
         setActiveGenre,
         filteredMovies,
-        setFilteredMovies,
         loading,
       }}
     >

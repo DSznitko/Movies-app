@@ -10,7 +10,7 @@ import LoadingIndicator from "../UI/LoadingIndicator";
 const GenresMovies = () => {
   const { filteredMovies, loading } = useContext(GenreMoviesContext);
   const loadingText = "Loading movies...";
-  console.log(loading);
+
   return (
     <>
       <section className={classes.movie__genres}>
