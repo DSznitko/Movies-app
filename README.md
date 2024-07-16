@@ -19,6 +19,8 @@
 - **Filtering :open_file_folder:**: user can filter movies by genre, for example comedy, action etc.
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/636c61a4-176c-445e-a242-c035deba7025)
+
 
 ## Setup
 1. Clone repository
