@@ -1,7 +1,7 @@
 
 # Movies App
 
-**Movies App** is a web application where user can search for their favorite movies. Filter them by genres and add to wish list
+**Movies App** is a web application where user can search for their favorite movies using **The Movie database** API (TMDB). Filter them by genres and add to wish list
 
 ### Technologies used in the project
 - React
@@ -10,6 +10,7 @@
 - React Context
 - CSS modules
 - Swiper JS
+- The Movie databse
 
 ### Features
 - **Search :mag_right:**: user can search favorite movies by typing movie title.
