@@ -1,5 +1,5 @@
 
-# Movies App ![image](https://github.com/user-attachments/assets/2044aa3f-cc0c-46e2-87f0-f75a1905f396)
+# Movies App 
 
 **Movies App** is a web application where user can search for their favorite movies using **The Movie database** API (TMDB). Filter them by genres and add to wish list
 
