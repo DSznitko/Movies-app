@@ -21,6 +21,7 @@
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/636c61a4-176c-445e-a242-c035deba7025)
 ![image](https://github.com/user-attachments/assets/c579e2ef-ce98-4d24-93c8-ff5e4206fb48)
+![image](https://github.com/user-attachments/assets/2881bcd7-ca1f-4b39-93c6-90bde9291db1)
 
 ## Setup
 1. Clone repository
