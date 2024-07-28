@@ -18,7 +18,7 @@ const PopularMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
   const { addFavMovieHandler } = useContext(MoviesContext);
   const { width } = useWidnowWidth();
-  const { data, error, loading } = useFetchData(
+  const { data, error } = useFetchData(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
   );
 
@@ -55,9 +55,8 @@ const PopularMovies = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        {error && !loading && <ErrorMessage>{errorText}</ErrorMessage>}
+        {error && !popularMovies && <ErrorMessage>{errorText}</ErrorMessage>}
         {popularMovies &&
-          !error &&
           popularMovies.map((movie) => (
             <SwiperSlide className={classes.slide} key={movie.id}>
               <h3 className={classes.movie__title}>{movie.title}</h3>
