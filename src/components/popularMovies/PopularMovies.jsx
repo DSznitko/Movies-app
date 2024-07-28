@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import classes from "./PopularMovies.module.css";
 import useFetchData from "../../hooks/useFetch";
 import { FaHeart } from "react-icons/fa";
 import MoviesContext from "../../context/MoviesContext";
 import useWidnowWidth from "../../hooks/useWidnowWidth";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 /* SWIPER IMPORTS */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,16 +16,15 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 const PopularMovies = () => {
   const api_key = process.env.REACT_APP_API_KEY;
-  const [popular, setPopular] = useState([]);
   const { addFavMovieHandler } = useContext(MoviesContext);
   const { width } = useWidnowWidth();
-  const { data } = useFetchData(
+  const { data, error, loading } = useFetchData(
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
   );
 
-  useEffect(() => {
-    setPopular(data.results);
-  }, [data]);
+  const popularMovies = data.results;
+
+  const errorText = "Problem with fetching Movies try again later";
 
   /* Show slides function */
   const slidesPerViewHandler = useMemo(() => {
@@ -55,8 +55,10 @@ const PopularMovies = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        {popular &&
-          popular.map((movie) => (
+        {error && !loading && <ErrorMessage>{errorText}</ErrorMessage>}
+        {popularMovies &&
+          !error &&
+          popularMovies.map((movie) => (
             <SwiperSlide className={classes.slide} key={movie.id}>
               <h3 className={classes.movie__title}>{movie.title}</h3>
               <Link to={`/${movie.id}`}>

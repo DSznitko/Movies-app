@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useCallback } from "react";
 import useFetchData from "../hooks/useFetch";
 
 const GenreMoviesContext = createContext();
