@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Footer.module.css";
-import SocialMedia from "../socialMedia/SocialMedia";
-import Copyright from "../copyright/Copyright";
+import SocialMedia from "../../socialMedia/SocialMedia";
+import Copyright from "../../copyright/Copyright";
 
 const Footer = () => {
   return (

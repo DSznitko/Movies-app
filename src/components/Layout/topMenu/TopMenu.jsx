@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 import { FaHeart } from "react-icons/fa";
 import classes from "./TopMenu.module.css";
 import { Link } from "react-router-dom";
-import SearchInput from "../UI/SearchInput";
-import useFetchData from "../../hooks/useFetch";
-import Movie from "../movie/Movie";
-import useWidnowWidth from "../../hooks/useWidnowWidth";
-import MoviesContext from "../../context/MoviesContext";
-import LoadingIndicator from "../UI/LoadingIndicator";
+import SearchInput from "../../UI/SearchInput";
+import useFetchData from "../../../hooks/useFetch";
+import Movie from "../../movie/Movie";
+import useWidnowWidth from "../../../hooks/useWidnowWidth";
+import MoviesContext from "../../../context/MoviesContext";
+import LoadingIndicator from "../../UI/LoadingIndicator";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
