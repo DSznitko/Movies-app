@@ -1,11 +1,11 @@
-import img1 from "../../assets/images/cliff-curtis.jpg";
-import img2 from "../../assets/images/kate-winslet.jpg";
-import img3 from "../../assets/images/michelle-yeoh.jpg";
-import img4 from "../../assets/images/sam-worthington.jpg";
-import img5 from "../../assets/images/sigourney-weaver.jpg";
-import img6 from "../../assets/images/stephen-lang.jpg";
-import img7 from "../../assets/images/trinity-jo-li-bliss.jpg";
-import img8 from "../../assets/images/zoe-saldana.jpg";
+import img1 from "../assets/images/cliff-curtis.jpg";
+import img2 from "../assets/images/kate-winslet.jpg";
+import img3 from "../assets/images/michelle-yeoh.jpg";
+import img4 from "../assets/images/sam-worthington.jpg";
+import img5 from "../assets/images/sigourney-weaver.jpg";
+import img6 from "../assets/images/stephen-lang.jpg";
+import img7 from "../assets/images/trinity-jo-li-bliss.jpg";
+import img8 from "../assets/images/zoe-saldana.jpg";
 
 const avatarCastData = [
   { id: "act1", img: img1, actorName: "Cliff Curtis" },

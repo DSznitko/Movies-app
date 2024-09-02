@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import classes from "./Avatar.module.css";
-import avatarCastData from "./avatarCastData";
+import avatarCastData from "../../data/avatarCastData";
 import AvatarActor from "../../components/avatarActor/AvatarActor";
 import useVoteColor from "../../hooks/useVoteColor";
 
