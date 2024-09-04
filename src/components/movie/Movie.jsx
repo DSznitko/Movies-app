@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
 import useVoteColor from "../../hooks/useVoteColor";
 
-const Movie = ({ movieData, setSearchedMovies, setSesrchValue }) => {
+const Movie = ({ movieData, setSearchedMovies, setSearchValue }) => {
   const { id, title, vote_average, poster_path } = movieData;
   const { voteColor } = useVoteColor();
 
@@ -14,7 +14,7 @@ const Movie = ({ movieData, setSearchedMovies, setSesrchValue }) => {
 
   const resetSearchedValues = () => {
     setSearchedMovies([]);
-    setSesrchValue("");
+    setSearchValue("");
   };
 
   return (

@@ -5,32 +5,39 @@ import { Link } from "react-router-dom";
 import SearchInput from "../../UI/SearchInput";
 import useFetchData from "../../../hooks/useFetch";
 import Movie from "../../movie/Movie";
-import useWidnowWidth from "../../../hooks/useWidnowWidth";
+import useWindowWidth from "../../../hooks/useWidnowWidth";
 import MoviesContext from "../../../context/MoviesContext";
 import LoadingIndicator from "../../UI/LoadingIndicator";
+import { debounce } from "lodash";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
   const { favMovies, movieAdded, setMovieAdded } = useContext(MoviesContext);
-  const { width } = useWidnowWidth();
+  const { width } = useWindowWidth();
 
-  const [searchValue, setSesrchValue] = useState("");
-  const [searchedMovies, setSearchedMovies] = useState([]);
-  const [showSerchInput, setShowSearchInput] = useState(true);
-  const { data, loading } = useFetchData(
+  const [searchValue, setSearchValue] = useState("");
+  const [showSearchInput, setShowSearchInput] = useState(true);
+  const {
+    data: searchedMovies,
+    loading,
+    setData: setSearchedMovies,
+  } = useFetchData(
     `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=${searchValue}`
   );
 
-  useEffect(() => {
-    let movies = data.results;
-    setSearchedMovies(movies);
-  }, [data]);
+  // Debounced function to update search value
+  const debouncedSetSearchValue = debounce((value) => {
+    setSearchValue(value);
+  }, 100);
 
-  // add movie animation handling
+  // Handle input change with debounce
+  const handleInputChange = (e) => {
+    debouncedSetSearchValue(e.target.value);
+  };
+
+  // Add movie animation handling
   useEffect(() => {
-    if (favMovies.length === 0) {
-      return;
-    }
+    if (favMovies.length === 0) return;
 
     setMovieAdded(true);
 
@@ -38,66 +45,67 @@ const TopMenu = () => {
       setMovieAdded(false);
     }, 700);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [favMovies]);
+    return () => clearTimeout(timer);
+  }, [favMovies, setMovieAdded]);
 
+  // Reset search input and scroll to top
   const resetSearch = () => {
     setSearchedMovies([]);
-    setSesrchValue("");
+    setSearchValue("");
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  // show or hide searchInput based on window scroll position
+  // Show or hide search input based on window scroll position
   useEffect(() => {
     const showSearchInputHandler = () => {
-      return window.scrollY <= 400
-        ? setShowSearchInput(true)
-        : setShowSearchInput(false);
+      setShowSearchInput(window.scrollY <= 400);
     };
 
     window.addEventListener("scroll", showSearchInputHandler);
-
     return () => window.removeEventListener("scroll", showSearchInputHandler);
   }, []);
 
   const fetchingText = "Fetching Movies...";
 
-  const searchInput = showSerchInput && (
-    <SearchInput setSesrchValue={setSesrchValue} searchValue={searchValue} />
+  // Render search input with debounce handler
+  const searchInput = showSearchInput && (
+    <SearchInput setSearchValue={handleInputChange} searchValue={searchValue} />
   );
 
+  // Render the movie list
   const showMovies = useMemo(() => {
-    if (searchedMovies === undefined) return;
+    if (!searchedMovies || !searchedMovies.results) return null;
 
-    if (searchedMovies.length === 0 && searchValue !== "" && showSerchInput)
+    if (
+      searchedMovies.results.length === 0 &&
+      searchValue !== "" &&
+      showSearchInput
+    ) {
       return (
         <p className={classes.movies_notFound}>
-          No movies found please type another title
+          No movies found, please type another title.
         </p>
       );
+    }
 
-    if (searchedMovies.length > 0)
-      return (
-        <ul className={classes.movies__list}>
-          {searchedMovies.map((movie) => (
-            <Movie
-              key={movie.id}
-              movieData={movie}
-              setSearchedMovies={setSearchedMovies}
-              setSesrchValue={setSesrchValue}
-            />
-          ))}
-        </ul>
-      );
-    else return null;
-  }, [searchedMovies, searchValue, showSerchInput]);
+    return (
+      <ul className={classes.movies__list}>
+        {searchedMovies.results.map((movie) => (
+          <Movie
+            key={movie.id}
+            movieData={movie}
+            setSearchedMovies={setSearchedMovies}
+            setSearchValue={setSearchValue}
+          />
+        ))}
+      </ul>
+    );
+  }, [searchedMovies, searchValue, showSearchInput, setSearchedMovies]);
 
   return (
     <>
       <div className={classes.topMenu}>
-        <Link onClick={() => resetSearch()} to="/" className={classes.logo}>
+        <Link onClick={resetSearch} to="/" className={classes.logo}>
           <h1 className={classes.headerLogo}>
             <span className={classes.blue}>Mo</span>vies
             <span className={classes.blue}>A</span>pp
@@ -110,7 +118,7 @@ const TopMenu = () => {
         )}
         {searchInput}
         <Link
-          onClick={() => resetSearch()}
+          onClick={resetSearch}
           className={classes.fav__link}
           to="/fav-movies"
         >
