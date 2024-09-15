@@ -6,15 +6,14 @@ import { FaHeart } from "react-icons/fa";
 import noImageFound from "../../assets/images/no-image.jpg";
 import useVoteColor from "../../hooks/useVoteColor";
 
-const Movie = ({ movieData, setSearchedMovies, setSearchValue }) => {
+const Movie = ({ movieData }) => {
   const { id, title, vote_average, poster_path } = movieData;
   const { voteColor } = useVoteColor();
 
   const { addFavMovieHandler } = useContext(MoviesContext);
 
   const resetSearchedValues = () => {
-    setSearchedMovies([]);
-    setSearchValue("");
+    // here reset search param query
   };
 
   return (

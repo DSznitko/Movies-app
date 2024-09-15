@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import { FaHeart } from "react-icons/fa";
 import classes from "./TopMenu.module.css";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import SearchInput from "../../UI/SearchInput";
 import useFetchData from "../../../hooks/useFetch";
 import Movie from "../../movie/Movie";
@@ -15,25 +15,28 @@ const TopMenu = () => {
   const { favMovies, movieAdded, setMovieAdded } = useContext(MoviesContext);
   const { width } = useWindowWidth();
 
-  const [searchValue, setSearchValue] = useState("");
   const [showSearchInput, setShowSearchInput] = useState(true);
-  const {
-    data: searchedMovies,
-    loading,
-    setData: setSearchedMovies,
-  } = useFetchData(
-    `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&query=${searchValue}`
+  const [search, setSearch] = useSearchParams();
+  const { data: searchedMovies, loading } = useFetchData(
+    `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&page=1&include_adult=false&${search.toString()}`
   );
 
-  // Debounced function to update search value
-  const debouncedSetSearchValue = debounce((value) => {
-    setSearchValue(value);
-  }, 100);
-
   // Handle input change with debounce
-  const handleInputChange = (e) => {
-    debouncedSetSearchValue(e.target.value);
-  };
+  const handleInputChange = debounce((e) => {
+    const inputValue = e.target.value;
+
+    if (inputValue.length === 0) {
+      search.delete("query");
+      setSearch(search, {
+        replace: true,
+      });
+    }
+
+    search.set("query", inputValue);
+    setSearch(search, {
+      replace: true,
+    });
+  }, 300);
 
   // Add movie animation handling
   useEffect(() => {
@@ -48,10 +51,12 @@ const TopMenu = () => {
     return () => clearTimeout(timer);
   }, [favMovies, setMovieAdded]);
 
-  // Reset search input and scroll to top
+  // Reset search query and scroll to top
   const resetSearch = () => {
-    setSearchedMovies([]);
-    setSearchValue("");
+    search.delete("query");
+    setSearch(search, {
+      replace: true,
+    });
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -69,7 +74,7 @@ const TopMenu = () => {
 
   // Render search input with debounce handler
   const searchInput = showSearchInput && (
-    <SearchInput setSearchValue={handleInputChange} searchValue={searchValue} />
+    <SearchInput setSearchValue={handleInputChange} />
   );
 
   // Render the movie list
@@ -78,8 +83,8 @@ const TopMenu = () => {
 
     if (
       searchedMovies.results.length === 0 &&
-      searchValue !== "" &&
-      showSearchInput
+      showSearchInput &&
+      search.get("query")
     ) {
       return (
         <p className={classes.movies_notFound}>
@@ -91,16 +96,11 @@ const TopMenu = () => {
     return (
       <ul className={classes.movies__list}>
         {searchedMovies.results.map((movie) => (
-          <Movie
-            key={movie.id}
-            movieData={movie}
-            setSearchedMovies={setSearchedMovies}
-            setSearchValue={setSearchValue}
-          />
+          <Movie key={movie.id} movieData={movie} />
         ))}
       </ul>
     );
-  }, [searchedMovies, searchValue, showSearchInput, setSearchedMovies]);
+  }, [searchedMovies, showSearchInput, search]);
 
   return (
     <>

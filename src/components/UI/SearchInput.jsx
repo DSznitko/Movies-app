@@ -1,7 +1,7 @@
 import classes from "./SearchInput.module.css";
 import { BsSearch } from "react-icons/bs";
 
-const SearchInput = ({ setSearchValue, searchValue }) => {
+const SearchInput = ({ setSearchValue }) => {
   return (
     <>
       <div className={classes.input__wrapper}>
@@ -13,7 +13,6 @@ const SearchInput = ({ setSearchValue, searchValue }) => {
           placeholder="Search Movie..."
           className={classes.search__input}
           type="search"
-          value={searchValue}
         />
       </div>
     </>
