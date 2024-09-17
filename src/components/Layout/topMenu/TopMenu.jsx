@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { FaHeart } from "react-icons/fa";
 import classes from "./TopMenu.module.css";
 import { Link, useSearchParams } from "react-router-dom";
@@ -22,21 +22,24 @@ const TopMenu = () => {
   );
 
   // Handle input change with debounce
-  const handleInputChange = debounce((e) => {
-    const inputValue = e.target.value;
+  const handleInputChange = useCallback(
+    debounce((e) => {
+      const inputValue = e.target.value;
 
-    if (inputValue.length === 0) {
-      search.delete("query");
+      if (inputValue.length === 0) {
+        search.delete("query");
+        setSearch(search, {
+          replace: true,
+        });
+      }
+
+      search.set("query", inputValue);
       setSearch(search, {
         replace: true,
       });
-    }
-
-    search.set("query", inputValue);
-    setSearch(search, {
-      replace: true,
-    });
-  }, 300);
+    }, 300),
+    [search, setSearch]
+  );
 
   // Add movie animation handling
   useEffect(() => {
@@ -72,35 +75,19 @@ const TopMenu = () => {
 
   const fetchingText = "Fetching Movies...";
 
-  // Render search input with debounce handler
   const searchInput = showSearchInput && (
     <SearchInput setSearchValue={handleInputChange} />
   );
 
   // Render the movie list
-  const showMovies = useMemo(() => {
-    if (!searchedMovies || !searchedMovies.results) return null;
-
-    if (
-      searchedMovies.results.length === 0 &&
-      showSearchInput &&
-      search.get("query")
-    ) {
-      return (
-        <p className={classes.movies_notFound}>
-          No movies found, please type another title.
-        </p>
-      );
-    }
-
-    return (
+  const showMovies =
+    !searchedMovies || !searchedMovies.results ? null : (
       <ul className={classes.movies__list}>
         {searchedMovies.results.map((movie) => (
           <Movie key={movie.id} movieData={movie} />
         ))}
       </ul>
     );
-  }, [searchedMovies, showSearchInput, search]);
 
   return (
     <>
@@ -134,6 +121,13 @@ const TopMenu = () => {
         </Link>
         {loading && <LoadingIndicator title={fetchingText} />}
       </div>
+      {searchedMovies?.results?.length === 0 &&
+        showSearchInput &&
+        search.get("query") && (
+          <p className={classes.movies_notFound}>
+            No movies found, please type another title.
+          </p>
+        )}
       {showMovies}
     </>
   );

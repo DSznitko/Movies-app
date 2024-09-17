@@ -12,14 +12,10 @@ const Movie = ({ movieData }) => {
 
   const { addFavMovieHandler } = useContext(MoviesContext);
 
-  const resetSearchedValues = () => {
-    // here reset search param query
-  };
-
   return (
     <div className={classes.movie__wrapper}>
       <span className={classes.movie__title}>{title}</span>
-      <Link onClick={() => resetSearchedValues()} to={`/${id}`}>
+      <Link to={`/${id}`}>
         <img
           className={classes.movie__image}
           src={
