@@ -5,16 +5,14 @@ import { Link, useSearchParams } from "react-router-dom";
 import SearchInput from "../../UI/SearchInput";
 import useFetchData from "../../../hooks/useFetch";
 import Movie from "../../movie/Movie";
-import useWindowWidth from "../../../hooks/useWidnowWidth";
 import MoviesContext from "../../../context/MoviesContext";
 import LoadingIndicator from "../../UI/LoadingIndicator";
 import { debounce } from "lodash";
 
 const TopMenu = () => {
   const api_key = process.env.REACT_APP_API_KEY;
-  const { favMovies, movieAdded, setMovieAdded } = useContext(MoviesContext);
-  const { width } = useWindowWidth();
 
+  const { favMovies, movieAdded, setMovieAdded } = useContext(MoviesContext);
   const [showSearchInput, setShowSearchInput] = useState(true);
   const [search, setSearch] = useSearchParams();
   const { data: searchedMovies, loading } = useFetchData(
@@ -98,11 +96,9 @@ const TopMenu = () => {
             <span className={classes.blue}>A</span>pp
           </h1>
         </Link>
-        {width > 980 && (
-          <span className={classes.topMenu__text}>
-            The best movies search platform!
-          </span>
-        )}
+        <span className={classes.topMenu__text}>
+          The best movies search platform!
+        </span>
         {searchInput}
         <Link
           onClick={resetSearch}

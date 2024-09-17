@@ -121,6 +121,12 @@
 
 /* MEDIA QUERIES  */
 
+@media (max-width: 980px) {
+  .topMenu__text {
+    display: none;
+  }
+}
+
 @media (max-width: 770px) {
   .headerLogo {
     font-size: var(--h1-mobile);
