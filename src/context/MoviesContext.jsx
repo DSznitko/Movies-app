@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { addMovieToast } from "../Utils/Toasts";
 
 const MoviesContext = createContext();
 
@@ -24,6 +25,7 @@ export const MoviesProvider = ({ children }) => {
       return [...prevMovie, { movie }];
     });
     setMovieAdded(true);
+    addMovieToast(movie.title);
   };
 
   const removeMovieHandler = (id) => {

@@ -12,8 +12,8 @@ html {
 :root {
   --logo-font: "Mochiy Pop One";
   --main-font: "Poppins";
-  --main-color: rgb(11, 100, 235);
-  --dark-black: rgba(0, 0, 0, 0.9);
+  --main-color: #0b64eb;
+  --dark-black: #000000e6;
   --light-black: rgba(0, 0, 0, 0.4);
   --h1: 4rem;
   --h2: 3.5rem;
