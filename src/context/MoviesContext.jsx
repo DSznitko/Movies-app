@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { addMovieToast } from "../Utils/Toasts";
+import { addMovieToast, sameMovieToast } from "../Utils/Toasts";
 
 const MoviesContext = createContext();
 
@@ -19,7 +19,7 @@ export const MoviesProvider = ({ children }) => {
       favMovies.length + 1 &&
       favMovies.find((el) => el.movie.id === movie.id)
     ) {
-      return alert("you have already added this movie!!");
+      return sameMovieToast(movie?.title);
     }
     setFavMovies((prevMovie) => {
       return [...prevMovie, { movie }];

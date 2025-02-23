@@ -3,8 +3,10 @@ import toast from "react-hot-toast";
 export const addMovieToast = (movieTitle) => {
   toast.success(
     <span>
-      <strong style={{ color: "#0b64eb" }}>{`"${movieTitle}"`}</strong> added to
-      your list
+      <strong
+        style={{ color: "#0b64eb", width: "max-content" }}
+      >{`"${movieTitle}"`}</strong>
+      added to your list
     </span>,
     {
       style: {
@@ -25,8 +27,10 @@ export const addMovieToast = (movieTitle) => {
 export const sameMovieToast = (movieTitle) => {
   toast.success(
     <span>
-      <strong style={{ color: "#0b64eb" }}>{`"${movieTitle}"`}</strong> this
-      movie is already on your list
+      <strong
+        style={{ color: "#0b64eb", width: "max-content" }}
+      >{`"${movieTitle}"`}</strong>
+      this movie is already on your list
     </span>,
     {
       style: {
