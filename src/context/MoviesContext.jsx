@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { addMovieToast, sameMovieToast } from "../Utils/Toasts";
+import { addMovieToast, sameMovieToast } from "../utils/toasts";
 
 const MoviesContext = createContext();
 
