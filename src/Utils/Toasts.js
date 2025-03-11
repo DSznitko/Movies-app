@@ -1,20 +1,14 @@
 import toast from "react-hot-toast";
+import ToastMessage from "../components/UI/ToastMessage";
 
 export const addMovieToast = (movieTitle) => {
   toast.success(
-    <span>
-      <strong
-        style={{ color: "#0b64eb", width: "max-content" }}
-      >{`"${movieTitle}"`}</strong>
-      added to your list
-    </span>,
+    <ToastMessage
+      movieTitle={movieTitle}
+      message="added to your list"
+      type="success"
+    />,
     {
-      style: {
-        border: "1px solid #0b64eb",
-        color: "#fff",
-        background: "#000000e6",
-        fontSize: "1.3rem",
-      },
       iconTheme: {
         primary: "#0b64eb",
         secondary: "#000000",
@@ -25,20 +19,30 @@ export const addMovieToast = (movieTitle) => {
 };
 
 export const sameMovieToast = (movieTitle) => {
-  toast.success(
-    <span>
-      <strong
-        style={{ color: "#0b64eb", width: "max-content" }}
-      >{`"${movieTitle}"`}</strong>
-      this movie is already on your list
-    </span>,
+  toast.error(
+    <ToastMessage
+      movieTitle={movieTitle}
+      message="exists on your list"
+      type="warning"
+    />,
     {
-      style: {
-        border: "1px solid #0b64eb",
-        color: "#fff",
-        background: "#000000e6",
-        fontSize: "1.3rem",
+      iconTheme: {
+        primary: "#0b64eb",
+        secondary: "#000000",
       },
+      duration: 1800,
+    }
+  );
+};
+
+export const removeMovieToast = (movieTitle) => {
+  toast.error(
+    <ToastMessage
+      movieTitle={movieTitle}
+      message="removed from your list"
+      type="remove"
+    />,
+    {
       iconTheme: {
         primary: "#0b64eb",
         secondary: "#000000",

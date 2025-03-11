@@ -1,5 +1,9 @@
 import { createContext, useState, useEffect } from "react";
-import { addMovieToast, sameMovieToast } from "../utils/toasts";
+import {
+  addMovieToast,
+  sameMovieToast,
+  removeMovieToast,
+} from "../utils/toasts";
 
 const MoviesContext = createContext();
 
@@ -29,6 +33,12 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const removeMovieHandler = (id) => {
+    const removedMovie = favMovies?.find(
+      (favMovie) => favMovie.movie.id === id
+    );
+    console.log(removedMovie);
+    removeMovieToast(removedMovie.movie.title);
+
     setFavMovies(
       favMovies.filter((favoriteMovie) => favoriteMovie.movie.id !== id)
     );
