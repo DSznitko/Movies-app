@@ -8,10 +8,10 @@ import {
 const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
-  const sotredFavoriteMovies =
+  const storedFavMovies =
     JSON.parse(localStorage.getItem("favorite-movies")) || [];
 
-  const [favMovies, setFavMovies] = useState(sotredFavoriteMovies);
+  const [favMovies, setFavMovies] = useState(storedFavMovies);
   const [movieAdded, setMovieAdded] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,6 @@ export const MoviesProvider = ({ children }) => {
     const removedMovie = favMovies?.find(
       (favMovie) => favMovie.movie.id === id
     );
-    console.log(removedMovie);
     removeMovieToast(removedMovie.movie.title);
 
     setFavMovies(
