@@ -13,6 +13,10 @@ export const addMovieToast = (movieTitle) => {
         primary: "#0b64eb",
         secondary: "#000000",
       },
+      style: {
+        bacground: "#aaaa",
+        border: "2px solid  #0b64eb",
+      },
       duration: 1800,
     }
   );
@@ -20,15 +24,14 @@ export const addMovieToast = (movieTitle) => {
 
 export const sameMovieToast = (movieTitle) => {
   toast.error(
-    <ToastMessage
-      movieTitle={movieTitle}
-      message="exists on your list"
-      type="warning"
-    />,
+    <ToastMessage movieTitle={movieTitle} message="exists on your list" />,
     {
       iconTheme: {
-        primary: "#0b64eb",
-        secondary: "#000000",
+        primary: "#f3a30f",
+        secondary: "#fff",
+      },
+      style: {
+        border: "2px solid #f3a30f",
       },
       duration: 1800,
     }
@@ -37,15 +40,14 @@ export const sameMovieToast = (movieTitle) => {
 
 export const removeMovieToast = (movieTitle) => {
   toast.error(
-    <ToastMessage
-      movieTitle={movieTitle}
-      message="removed from your list"
-      type="remove"
-    />,
+    <ToastMessage movieTitle={movieTitle} message="removed from your list" />,
     {
       iconTheme: {
-        primary: "#0b64eb",
-        secondary: "#000000",
+        primary: "#c50000",
+        secondary: "#fff",
+      },
+      style: {
+        border: "2px solid #c50000",
       },
       duration: 1800,
     }
